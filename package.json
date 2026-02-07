@@ -1,6 +1,6 @@
 {
   "name": "msgpack-buffer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Python RNS-compatible msgpack encoder/decoder with Buffer support",
   "main": "lib/msgpack-buffer.js",
   "types": "lib/msgpack-buffer.d.ts",
