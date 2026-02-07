@@ -27,7 +27,7 @@ npm install msgpack-buffer
 ## Usage
 
 ```typescript
-import { encode, decode, decodeValue } from 'msgpack-buffer';
+import { encode, decode, decodeWithOffset } from 'msgpack-buffer';
 
 // Encode data with Buffers
 const data = {
@@ -39,10 +39,10 @@ const data = {
 const encoded = encode(data);
 
 // Decode with full info
-const { value, bytesConsumed } = decode(encoded);
+const { value, bytesConsumed } = decodeWithOffset(encoded);
 
 // Or just get the value
-const decoded = decodeValue(encoded);
+const decoded = decode(encoded);
 ```
 
 ## API
