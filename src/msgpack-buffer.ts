@@ -1,26 +1,17 @@
 /*
  * Reticulum License
  *
- * Copyright (c) 2016-2025 Mark Qvist
+ * Copyright (c) 2026 Jindrich Vavruska
  *
+ * LICENSE
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
- * - The Software shall not be used in any kind of system which includes amongst
- *   its functions the ability to purposefully do harm to human beings.
- *
- * - The Software shall not be used, directly or indirectly, in the creation of
- *   an artificial intelligence, machine learning or language model training
- *   dataset, including but not limited to any use that contributes to the
- *   training or development of such a model or algorithm.
- *
- * - The above copyright notice and this permission notice shall be included in
- *   all copies or substantial portions of the Software.
- *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,12 +19,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
- * Custom msgpack encoding/decoding for Python RNS compatibility
- * 
- * Python RNS uses custom umsgpack that encodes bytes as binary format (0xC4/C5/C6).
- * Standard msgpack-lite encodes Buffer keys as UTF-8 strings (0xB8 fixstr).
- * This module provides generic encoding/decoding that matches Python's format.
+  *
+  * This module provides custom msgpack encoding and decoding functions that handle Buffers as binary format (0xC4/C5/C6) 
+  * for binary compatibility with files created and used by Python RNS (Reticulum Network Stack).
+  * It recursively encodes and decodes nested structures while preserving Buffer
+  * binary format, and uses BufferMap for maps with Buffer keys to enable content-based comparison. 
+  * The decode function returns both the decoded value and the number of bytes consumed, allowing for 
+  * efficient parsing of complex msgpack data.
  */
 
 import * as msgpack from 'msgpack-lite';
