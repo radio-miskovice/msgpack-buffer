@@ -1,10 +1,13 @@
 # msgpack-buffer
 
-Python RNS-compatible msgpack encoder/decoder with Buffer support.
+Python msgpack encoder/decoder with Buffer support.
 
 ## Overview
 
-This library provides msgpack encoding and decoding that maintains compatibility with Python's RNS custom umsgpack implementation. It properly handles Node.js Buffers as binary format (0xC4/C5/C6) instead of encoding them as strings, which is essential for cross-platform data exchange with Python RNS.
+This library provides msgpack encoding and decoding that maintains compatibility with custom umsgpack
+implementation used in Reticulum Network Stack implemented in Python. It properly handles Node.js Buffers 
+as binary format (0xC4/C5/C6) instead of encoding them as strings, which is, among other possible use,
+essential for cross-platform data exchange with Python RNS ecosystem.
 
 ## Features
 
@@ -58,4 +61,4 @@ Convenience function that decodes and returns just the value.
 
 ## License
 
-MIT (matches Reticulum license for compatibility)
+MIT

@@ -143,7 +143,7 @@ export function encode(data: any): Buffer {
  * @param offset - Current read offset (for recursion)
  * @returns Object with decoded value and bytes consumed
  */
-export function decode(data: Buffer, offset: number = 0): { value: any; bytesConsumed: number } {
+export function decodeWithOffset(data: Buffer, offset: number = 0): { value: any; bytesConsumed: number } {
   if (offset >= data.length) {
     throw new Error('Unexpected end of msgpack data');
   }
@@ -345,7 +345,7 @@ function decodeArray(data: Buffer, offset: number, size: number, startOffset: nu
   const result: any[] = [];
   
   for (let i = 0; i < size; i++) {
-    const { value, bytesConsumed } = decode(data, offset);
+    const { value, bytesConsumed } = decodeWithOffset(data, offset);
     result.push(value);
     offset += bytesConsumed;
   }
@@ -363,10 +363,10 @@ function decodeMap(data: Buffer, offset: number, size: number, startOffset: numb
   let hasBufferKeys = false;
   
   for (let i = 0; i < size; i++) {
-    const { value: key, bytesConsumed: keyBytes } = decode(data, offset);
+    const { value: key, bytesConsumed: keyBytes } = decodeWithOffset(data, offset);
     offset += keyBytes;
     
-    const { value, bytesConsumed: valueBytes } = decode(data, offset);
+    const { value, bytesConsumed: valueBytes } = decodeWithOffset(data, offset);
     offset += valueBytes;
     
     if (Buffer.isBuffer(key)) {
@@ -383,12 +383,13 @@ function decodeMap(data: Buffer, offset: number, size: number, startOffset: numb
 }
 
 /**
- * Convenience function to decode and return just the value (without bytesConsumed).
+ * Function equivalent to msgpack's decode function 
+ * to decode and return just the value (without bytesConsumed).
  * Useful when you know you're decoding the entire buffer.
  * 
  * @param data - Encoded msgpack Buffer
  * @returns Decoded value
  */
-export function decodeValue(data: Buffer): any {
-  return decode(data, 0).value;
+export function decode(data: Buffer): any {
+  return decodeWithOffset(data, 0).value;
 }
