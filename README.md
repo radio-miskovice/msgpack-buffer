@@ -51,11 +51,11 @@ const decoded = decode(encoded);
 
 Encodes any data structure to msgpack format. Buffers are encoded as binary (0xC4/C5/C6).
 
-### `decode(data: Buffer, offset?: number): { value: any; bytesConsumed: number }`
+### `decodeWithOffset(data: Buffer, offset?: number): { value: any; bytesConsumed: number }`
 
 Decodes msgpack data starting at offset. Returns the decoded value and bytes consumed.
 
-### `decodeValue(data: Buffer): any`
+### `decode(data: Buffer): any`
 
 Convenience function that decodes and returns just the value.
 
