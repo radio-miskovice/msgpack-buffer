@@ -1,0 +1,35 @@
+{
+  "name": "msgpack-buffer",
+  "version": "1.0.0",
+  "description": "Python RNS-compatible msgpack encoder/decoder with Buffer support",
+  "main": "lib/msgpack-buffer.js",
+  "types": "lib/msgpack-buffer.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "msgpack",
+    "buffer",
+    "binary",
+    "serialization",
+    "reticulum",
+    "python-compatible"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "@types/msgpack-lite": "^0.1.12",
+    "@types/node": "^20.10.6",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "buffer-collections": "^1.0.0",
+    "msgpack-lite": "^0.1.26"
+  }
+}
