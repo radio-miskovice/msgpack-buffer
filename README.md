@@ -1,6 +1,6 @@
 # msgpack-buffer
 
-Python msgpack encoder/decoder with Buffer support.
+Nodejs msgpack encoder/decoder with Buffer support.
 
 ## Overview
 
